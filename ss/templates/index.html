@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Candlestick Chart</title>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.stock-info, .chart {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #777;
+}
+
+/* Good contrasting colors */
+.stock-info {
+  background-color: #3498db;
+}
+
+.chart {
+  background-color: black;
+}
+
+h1, .chart p {
+  color: #fff;
+}
+
+/* Responsive styles (optional) */
+@media screen and (max-width: 768px) {
+  .stock-info, .chart {
+    padding: 15px;
+    font-size: 18px;
+  }
+  
+  h1 {
+    font-size: 20px;
+  }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="stock-info">
+        {% if current_price %}
+        <h1 >{{ stock_name }} - Stock Price:$ {{ current_price }}</h1>
+        {% else %}
+        <h1>Stock Price: Not Available</h1>
+        <h1>please give valid stock price ticker symbol</h1>
+        {% endif %}
+
+    </div>
+
+    <div class="chart">
+        {% if candlestick_chart %}
+            {{ candlestick_chart | safe }}
+        {% else %}
+            <p>No chart available</p>
+            <p>please give valid stock price ticker symbol</p>
+        {% endif %}
+    </div>
+
+
+    
+    
+
+</body>
+</html>
